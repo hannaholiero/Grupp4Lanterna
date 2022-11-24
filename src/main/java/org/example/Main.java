@@ -31,6 +31,7 @@ public class Main {
 
         String title = "APPLE GAME";
         String toStart = "PRESS E TO START";
+        String score = "Score:";
         textGraphics.putString(1, 1, title, SGR.BORDERED);
         textGraphics.putString(1, 5, toStart, SGR.BLINK, SGR.BOLD);
 
@@ -39,6 +40,7 @@ public class Main {
         while (true){
             do {
                 keyStroke = terminal.pollInput();
+
             }
             while (keyStroke == null);
 
@@ -70,10 +72,14 @@ public class Main {
 
         Position playerposition = new Position(10, 10);
         textGraphics.putString(10, 10, playerStart, SGR.BOLD);
+        textGraphics.putString(1,14,score, SGR.ITALIC);
+
+
+
 
         KeyStroke latestKeyStroke = null;
 
-        int score = 1;
+        int points = 1;
         int sum = 0;
         boolean continueReadingInput = true;
         while (continueReadingInput) {
@@ -92,7 +98,8 @@ public class Main {
                             applePosition = new Position(r.nextInt(35),13);
                             terminal.setCursorPosition(applePosition.col, applePosition.row);
                             terminal.putCharacter(apple);
-                            textGraphics.putString(10, 10, String.valueOf(score++), SGR.BOLD);
+                            textGraphics.putString(1, 14, score, SGR.ITALIC);
+                            textGraphics.putString(8, 14, String.valueOf(points++), SGR.UNDERLINE);
 //                          continueReadingInput = false;
 
 //                            textGraphics.putString(5, 5, String.valueOf(sum), SGR.BOLD);
